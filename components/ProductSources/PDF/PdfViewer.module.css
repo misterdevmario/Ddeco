@@ -1,0 +1,30 @@
+.lgpdf {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2vh;
+  overflow-y: auto;
+}
+
+.smpdf{
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+
+
+  .lgpdf {
+    display: none;
+  }
+
+  .smpdf{
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    flex-direction: column;
+    gap: 2vh;
+    min-height: 50vh;
+    overflow-y: auto;
+  }
+}

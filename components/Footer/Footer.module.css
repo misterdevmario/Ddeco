@@ -1,0 +1,18 @@
+.container {
+  width: 100vw;
+  height: 5vh;
+  background: var(--gradient);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-family: var(--font-main);
+  position: absolute;
+  
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    font-size: 3vw;
+  }
+}

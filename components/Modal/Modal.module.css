@@ -1,0 +1,57 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgb(0, 0, 0, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.isOpen {
+  display: flex;
+}
+
+.modal_container {
+  width: 100vw;
+  max-height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.modal_container::-webkit-scrollbar {
+  display: none;
+}
+
+.modal_close {
+  position: sticky;
+  top: 5%;
+  left: 75%;
+}
+
+@media screen and (max-width: 1400px) {
+  .modal_close {
+    position: sticky;
+    top: 5%;
+    left: 75%;
+  }
+  .modal_container {
+    max-height: 550px;
+  }
+}
+
+@media screen and (max-width: 528px) {
+  .modal_close {
+    top: 0;
+    left: 80vw;
+  }
+  .modal_container {
+    max-height: 790px;
+    width: 95vw;
+    padding: 5vh;
+  }
+}
