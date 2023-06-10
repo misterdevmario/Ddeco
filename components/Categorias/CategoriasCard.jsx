@@ -14,7 +14,7 @@ import styles from "./CategoriasCard.module.css";
 const CategoriasCard = ({ category }) => {
   const router = useRouter();
   const goProducts = (id) => {
-    router.push(`/categoria/${id}`);
+    router.push(`/ddeco/categoria/${id}`);
   };
 
   return (
@@ -28,8 +28,8 @@ const CategoriasCard = ({ category }) => {
           >
             <div className={styles.card_img}>
               <Image
-                src={item.img}
-                alt="logo"
+                src={item.img[0]}
+                alt={item.subcategory}
                 width={215}
                 height={150}
                 priority

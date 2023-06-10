@@ -7,12 +7,13 @@ La siguiente sección del código realiza un procesamiento adicional para crear 
 La función `getStaticProps` devuelve un objeto que contiene el objeto `props` con los accesorios `categoriesFiltered`, `products` y `categories`, así como una propiedad `revalidate` que le dice a Next.js que regenere la página cada 10 segundos. */
 
 import Head from "next/head";
-//import Navbar from "../components/NavBar/NavBar";
 import axios from "axios";
-//import CategoriasCard from "../components/Categorias/CategoriasCard";
-//import Footer from "../components/Footer/Footer";
+import NavBar from "../../../components/NavBar/NavBar";
+import CategoriasCard from "../../../components/Categorias/CategoriasCard";
+import Footer from "../../../components/Footer/Footer";
 
 function Categorias({ categoriesFiltered, products }) {
+ 
   return (
     <>
       <Head>
@@ -21,11 +22,10 @@ function Categorias({ categoriesFiltered, products }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicontlapps.svg" />
       </Head>
-      {/* <Navbar categoriesFiltered={categoriesFiltered} products={products} /> */}
+      <NavBar categoriesFiltered={categoriesFiltered} products={products} />
       <main>
-        {/* <CategoriasCard category={categoriesFiltered} />
-        <Footer /> */}
-        Categorias
+        <CategoriasCard category={categoriesFiltered} />
+        <Footer />
       </main>
     </>
   );
@@ -44,11 +44,14 @@ export async function getStaticProps() {
 
   const categories = allCategories.data.data.map((item) => ({
     id: item.id,
-    subcategory: item.attributes.subCategory,
-    image: item.attributes.cover.data.map((item) => item.attributes.url),
+    category: item.attributes.subCategory,
+    img: item.attributes.cover.data.map((item) => item.attributes.url),
     bgImage: item.attributes.background.data.map((item) => item),
     thumbImg: item.attributes.thumbnail.data.map((item) => item),
   }));
+
+  console.log(categories)
+
   const products = allProducts.data.data.map((item) => ({
     id: item.id,
     name: item.attributes.description,
@@ -85,15 +88,15 @@ export async function getStaticProps() {
   
   for (let i = 0; i < categoryFilterLength; i++) {
     for (let j = 0; j < categoryFilterLength; j++) {
-      if (categories[i].subcategory == categoryProductFiltered[j])
+      if (categories[i].category == categoryProductFiltered[j])
       categoriesFiltered.push(categories[i]);
     }
   }
+  console.log(categoriesFiltered)
   return {
     props: {
       categoriesFiltered,
       products,
-      categories,
     },
     revalidate: 10,
   };
